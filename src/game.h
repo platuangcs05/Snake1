@@ -32,7 +32,8 @@ class Game {
   bool recreate{ false };
 
   void PlaceFood();
-  void PlaceSpecialFood();
+  //void PlaceSpecialFood();
+  void BoomFood();
   void Update();
 };
 

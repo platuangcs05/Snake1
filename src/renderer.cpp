@@ -3,12 +3,14 @@
 #include <string>
 
 Renderer::Renderer(const std::size_t screen_width,
-    const std::size_t screen_height,
-    const std::size_t grid_width, const std::size_t grid_height)
+                   const std::size_t screen_height,
+                   const std::size_t grid_width, const std::size_t grid_height)
     : screen_width(screen_width),
     screen_height(screen_height),
     grid_width(grid_width),
     grid_height(grid_height),
+
+    //[TUAN] Add 
     sdl_window(nullptr, SDL_DestroyWindow),
     sdl_renderer(nullptr, SDL_DestroyRenderer) {
     // Initialize SDL
@@ -19,8 +21,8 @@ Renderer::Renderer(const std::size_t screen_width,
 
     // Create Window
     sdl_window.reset(SDL_CreateWindow("Snake Game", SDL_WINDOWPOS_CENTERED,
-        SDL_WINDOWPOS_CENTERED, screen_width,
-        screen_height, SDL_WINDOW_SHOWN));
+                                       SDL_WINDOWPOS_CENTERED, screen_width,
+                                       screen_height, SDL_WINDOW_SHOWN));
 
     if (nullptr == sdl_window) {
         std::cerr << "Window could not be created.\n";
@@ -28,6 +30,7 @@ Renderer::Renderer(const std::size_t screen_width,
     }
 
     // Create renderer
+    //[TUAN] Add 
     sdl_renderer.reset(SDL_CreateRenderer(sdl_window.get(), -1, SDL_RENDERER_ACCELERATED));
     if (nullptr == sdl_renderer) {
         std::cerr << "Renderer could not be created.\n";

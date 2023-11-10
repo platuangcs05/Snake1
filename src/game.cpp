@@ -9,7 +9,11 @@ Game::Game(std::size_t grid_width, std::size_t grid_height)
 	random_w(0, static_cast<int>(grid_width - 1)),
 	random_h(0, static_cast<int>(grid_height - 1)) {
 	PlaceFood();
-	PlaceSpecialFood();
+
+	//[TUAN] Add more food
+	//PlaceSpecialFood();
+	BoomFood();
+	//--------------------
 }
 
 void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer,
@@ -25,7 +29,11 @@ void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer
 
 		// Input, Update, Render - the main game loop.
 		controller.HandleInput(running, snake);
+
+		//[TUAN] Add more food
 		renderer->Render(snake, food, SpecialFood);
+		//--------------------
+
 		Update();
 		frame_end = SDL_GetTicks();
 
@@ -36,6 +44,8 @@ void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer
 
 		// After every second, update the window title.
 		if (frame_end - title_timestamp >= 1000) {
+
+			//[TUAN] SnakeGame   Score / Size / HighScore / Times
 			renderer->UpdateWindowTitle(score, frame_count, countdown);
 			if (countdown == 0)
 			{
@@ -71,8 +81,10 @@ void Game::PlaceFood() {
 	}
 }
 
-
-void Game::PlaceSpecialFood() {
+//[TUAN] Add more food
+//--------------------
+//void Game::PlaceSpecialFood() {
+void Game::BoomFood() {	
     std::uniform_real_distribution<double> distribution(0.0, 1.0);
     bool bCheck = distribution(engine) < PROBABILITY / 100.0;
     
@@ -89,23 +101,29 @@ void Game::PlaceSpecialFood() {
         bCheck = distribution(engine) < PROBABILITY / 100.0;
     }
 }
-
+//--------------------
 
 void Game::Update() {
 	if (!snake.alive) return;
 
 	snake.Update();
-	//food position
+	
 	int new_x = static_cast<int>(snake.head_x);
 	int new_y = static_cast<int>(snake.head_y);
-	//speacical food position
+
+	//[TUAN] Add more food
+	//--------------------
 	int newSpecical_x = static_cast<int>(snake.head_x);
 	int newSpecical_y = static_cast<int>(snake.head_y);
+
 	if (recreate)
 	{
 		recreate = false;
-		PlaceSpecialFood();
+		//PlaceSpecialFood();
+		BoomFood();
 	}
+	
+	//[TUAN] Add more food
 	// Check if there's food over here
 	if (food.x == new_x && food.y == new_y) {
 		score++;
@@ -116,12 +134,13 @@ void Game::Update() {
 	}
 	// Check if there's specical food over here
 	if (SpecialFood.x == newSpecical_x && SpecialFood.y == newSpecical_y) {
-   		score = (score == 0) ? 3 : score + 3;
-      	PlaceSpecialFood();
+   		//score = (score == 0) ? 3 : score + 3;
+      	//PlaceSpecialFood();
+		snake.alive = false;
 	}
 }
 
-
+//[TUAN] Add High
 
 int Game::GetScore() const { return score; }
 int Game::GetSize() const { return snake.size; }
