@@ -79,6 +79,11 @@ void Renderer::Render(Snake const snake, SDL_Point const& food, SDL_Point const&
     }
     else {
         SDL_SetRenderDrawColor(sdl_renderer.get(), 0xFF, 0x00, 0x00, 0xFF);
+        //TUAN
+        SDL_Rect temp;
+        temp.w = screen_width;
+        temp.h = screen_height;
+        SDL_RenderFillRect(sdl_renderer.get(), &temp);
     }
     SDL_RenderFillRect(sdl_renderer.get(), &block);
 
