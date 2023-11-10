@@ -1,3 +1,0 @@
-/workspace/home/project5_5/build/CMakeFiles/rebuild_cache.dir
-/workspace/home/project5_5/build/CMakeFiles/SnakeGame.dir
-/workspace/home/project5_5/build/CMakeFiles/edit_cache.dir
