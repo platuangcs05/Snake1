@@ -20,7 +20,7 @@ class Game {
  private:
   Snake snake;
   SDL_Point food;
-  SDL_Point SpecialFood;
+  SDL_Point BomFood;
 
   std::random_device dev;
   std::mt19937 engine;
@@ -32,8 +32,7 @@ class Game {
   bool recreate{ false };
 
   void PlaceFood();
-  //void PlaceSpecialFood();
-  void BoomFood();
+  void BomFood();
   void Update();
 };
 

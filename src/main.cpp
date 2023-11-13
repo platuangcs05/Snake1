@@ -21,6 +21,7 @@ int main() {
     //SnakeLog SnakeLog;
     //SnakeLog.Start();
     auto startTime = std::chrono::steady_clock::now();
+    
     game.Run(controller, renderer, kMsPerFrame);
     auto endTime = std::chrono::steady_clock::now();
     auto elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(endTime - startTime).count();

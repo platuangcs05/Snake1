@@ -42,7 +42,7 @@ Renderer::~Renderer() {
     // smart pointers will automatically call SDL_DestroyWindow and SDL_Quit
 }
 
-void Renderer::Render(Snake const snake, SDL_Point const& food, SDL_Point const& SpecialFood) {
+void Renderer::Render(Snake const snake, SDL_Point const& food, SDL_Point const& BomFood) {
     SDL_Rect block;
     block.w = screen_width / grid_width;
     block.h = screen_height / grid_height;
@@ -57,10 +57,10 @@ void Renderer::Render(Snake const snake, SDL_Point const& food, SDL_Point const&
     block.y = food.y * block.h;
     SDL_RenderFillRect(sdl_renderer.get(), &block);
 
-    // Render special Food
+    // Render Bom Food
     SDL_SetRenderDrawColor(sdl_renderer.get(), 0xFF, 0x00, 0x00, 0xFF);
-    block.x = SpecialFood.x * block.w;
-    block.y = SpecialFood.y * block.h;
+    block.x = BomFood.x * block.w;
+    block.y = BomFood.y * block.h;
     SDL_RenderFillRect(sdl_renderer.get(), &block);
 
     // Render snake's body
@@ -78,7 +78,7 @@ void Renderer::Render(Snake const snake, SDL_Point const& food, SDL_Point const&
         SDL_SetRenderDrawColor(sdl_renderer.get(), 0x00, 0x7A, 0xCC, 0xFF);
     }
     else {
-        SDL_SetRenderDrawColor(sdl_renderer.get(), 0xFF, 0x00, 0x00, 0xFF);
+        SDL_SetRenderDrawColor(sdl_renderer.get(), 0x00, 0x00, 0x00, 0xFF);
         //TUAN
         SDL_Rect temp;
         temp.w = screen_width;
@@ -92,6 +92,6 @@ void Renderer::Render(Snake const snake, SDL_Point const& food, SDL_Point const&
 }
 
 void Renderer::UpdateWindowTitle(int score, int fps, int countdown) {
-    std::string title{"Score: " + std::to_string(score) + "| FPS: " + std::to_string(fps) + "| Recreate the special food after: " + std::to_string(countdown) + " seconds"};
+    std::string title{"Score: " + std::to_string(score) + "| FPS: " + std::to_string(fps) + "| Snake Times: " + std::to_string(countdown) + " seconds"};
     SDL_SetWindowTitle(sdl_window.get(), title.c_str());
 }
