@@ -30,7 +30,7 @@ void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer
 		controller.HandleInput(running, snake);
 
 		//[TUAN] Add more food
-		renderer->Render(snake, food, BomFood);
+		renderer->Render(snake, food, Bom);
 		//--------------------
 
 		Update();
@@ -91,8 +91,8 @@ void Game::BomFood() {
         int y = random_h(engine);
         
         if (!snake.SnakeCell(x, y) && x != food.x && y != food.y) {
-            BomFood.x = x;
-            BomFood.y = y;
+            Bom.x = x;
+            Bom.y = y;
             return;
         }
         
@@ -129,8 +129,8 @@ void Game::Update() {
 		snake.GrowBody();
 		snake.speed += 0.02;
 	}
-	// Check if there's bom food here
-	if (BomFood.x == newSpecical_x && BomFood.y == newSpecical_y) {
+	// Check if there's boom food here
+	if (Bom.x == newSpecical_x && Bom.y == newSpecical_y) {
 		snake.alive = false;
 	}
 }
