@@ -11,7 +11,7 @@ Game::Game(std::size_t grid_width, std::size_t grid_height)
 	PlaceFood();
 
 	//[TUAN] Add more food
-	BomFood();
+	WallFood();
 	//--------------------
 }
 
@@ -30,7 +30,7 @@ void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer
 		controller.HandleInput(running, snake);
 
 		//[TUAN] Add more food
-		renderer->Render(snake, food, Bom);
+		renderer->Render(snake, food, Walls);
 		//--------------------
 
 		Update();
@@ -82,7 +82,7 @@ void Game::PlaceFood() {
 
 //[TUAN] Add more food
 //--------------------
-void Game::BomFood() {	
+void Game::WallFood() {	
     std::uniform_real_distribution<double> distribution(0.0, 1.0);
     bool bCheck = distribution(engine) < PROBABILITY / 100.0;
     
@@ -91,8 +91,8 @@ void Game::BomFood() {
         int y = random_h(engine);
         
         if (!snake.SnakeCell(x, y) && x != food.x && y != food.y) {
-            Bom.x = x;
-            Bom.y = y;
+            Walls.x = x;
+            Walls.y = y;
             return;
         }
         
@@ -117,7 +117,7 @@ void Game::Update() {
 	if (recreate)
 	{
 		recreate = false;
-		BomFood();
+		WallFood();
 	}
 	
 	//[TUAN] Add more food
@@ -130,7 +130,7 @@ void Game::Update() {
 		snake.speed += 0.02;
 	}
 	// Check if there's boom food here
-	if (Bom.x == newSpecical_x && Bom.y == newSpecical_y) {
+	if (Walls.x == newSpecical_x && Walls.y == newSpecical_y) {
 		snake.alive = false;
 	}
 }
