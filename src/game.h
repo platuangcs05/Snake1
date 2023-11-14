@@ -28,7 +28,7 @@ class Game {
   std::uniform_int_distribution<int> random_h;
 
   int score{0};
-  int countdown{10};
+  int countdown{3};
   bool recreate{ false };
 
   void PlaceFood();

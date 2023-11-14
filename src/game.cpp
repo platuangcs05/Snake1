@@ -49,7 +49,7 @@ void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer
 			if (countdown == 0)
 			{
 				recreate = true;
-				countdown = 10;
+				countdown = 3;
 			}
 			countdown--;
 			frame_count = 0;
@@ -83,7 +83,7 @@ void Game::PlaceFood() {
 //[TUAN] Add more food
 //--------------------
 void Game::WallFood() {	
-    std::uniform_real_distribution<double> distribution(0.0, 1.0);
+    std::uniform_real_distribution<double> distribution(0.0, 2.0);
     bool bCheck = distribution(engine) < PROBABILITY / 100.0;
     
     while (bCheck) {
