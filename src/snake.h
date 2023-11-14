@@ -4,7 +4,7 @@
 #include <vector>
 #include "SDL.h"
 
-#define PROBABILITY 50 
+#define PROBABILITY 50
 
 class Snake {
  public:
@@ -26,7 +26,7 @@ class Snake {
   float speed{0.1f};
   int size{1};
   bool alive{true};
-  float head_x;
+  float head_x; // Snake head
   float head_y;
   std::vector<SDL_Point> body;
 

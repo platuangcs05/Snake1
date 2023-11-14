@@ -23,6 +23,10 @@ void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer
 	Uint32 frame_duration;
 	int frame_count = 0;
 	bool running = true;
+
+	//Tuan
+	Uint32 frame_tickinsecond = SDL_GetTicks();
+
 	while (running) {
 		frame_start = SDL_GetTicks();
 
@@ -30,7 +34,7 @@ void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer
 		controller.HandleInput(running, snake);
 
 		//[TUAN] Add more food
-		renderer->Render(snake, food, Walls);
+		renderer->Render(snake, food, walls);
 		//--------------------
 
 		Update();
@@ -41,11 +45,17 @@ void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer
 		frame_count++;
 		frame_duration = frame_end - frame_start;
 
+		//Tuan
+		frame_timeplay = frame_end - title_timestamp;
+
 		// After every second, update the window title.
-		if (frame_end - title_timestamp >= 1000) {
+		//if (frame_end - title_timestamp >= 1000) {
+		if (frame_end - frame_tickinsecond >= 1000) {
 
 			//[TUAN] SnakeGame   Score / Size / HighScore / Times
-			renderer->UpdateWindowTitle(score, frame_count, countdown);
+			//renderer->UpdateWindowTitle(score, frame_count, countdown);
+			renderer->UpdateWindowTitle(score, frame_count, (title_timestamp - frame_end)/1000);
+
 			if (countdown == 0)
 			{
 				recreate = true;
@@ -53,7 +63,8 @@ void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer
 			}
 			countdown--;
 			frame_count = 0;
-			title_timestamp = frame_end;
+			//title_timestamp = frame_end;
+			frame_tickinsecond = frame_end;
 		}
 
 		// If the time for this frame is too small (i.e. frame_duration is
@@ -83,7 +94,7 @@ void Game::PlaceFood() {
 //[TUAN] Add more food
 //--------------------
 void Game::WallFood() {	
-    std::uniform_real_distribution<double> distribution(0.0, 2.0);
+    std::uniform_real_distribution<double> distribution(0.0, 1.0);
     bool bCheck = distribution(engine) < PROBABILITY / 100.0;
     
     while (bCheck) {
@@ -91,8 +102,8 @@ void Game::WallFood() {
         int y = random_h(engine);
         
         if (!snake.SnakeCell(x, y) && x != food.x && y != food.y) {
-            Walls.x = x;
-            Walls.y = y;
+            walls.x = x;
+            walls.y = y;
             return;
         }
         
@@ -111,8 +122,8 @@ void Game::Update() {
 
 	//[TUAN] Add more food
 	//--------------------
-	int newSpecical_x = static_cast<int>(snake.head_x);
-	int newSpecical_y = static_cast<int>(snake.head_y);
+	int newBom_x = static_cast<int>(snake.head_x);
+	int newBom_y = static_cast<int>(snake.head_y);
 
 	if (recreate)
 	{
@@ -129,8 +140,8 @@ void Game::Update() {
 		snake.GrowBody();
 		snake.speed += 0.02;
 	}
-	// Check if there's boom food here
-	if (Walls.x == newSpecical_x && Walls.y == newSpecical_y) {
+	// Check if there's bom food here
+	if (walls.x == newBom_x && walls.y == newBom_y) {
 		snake.alive = false;
 	}
 }

@@ -42,7 +42,7 @@ Renderer::~Renderer() {
     // smart pointers will automatically call SDL_DestroyWindow and SDL_Quit
 }
 
-void Renderer::Render(Snake const snake, SDL_Point const& food, SDL_Point const& Walls) {
+void Renderer::Render(Snake const snake, SDL_Point const& food, SDL_Point const& walls) {
     SDL_Rect block;
     block.w = screen_width / grid_width;
     block.h = screen_height / grid_height;
@@ -59,8 +59,8 @@ void Renderer::Render(Snake const snake, SDL_Point const& food, SDL_Point const&
 
     // Render Walls
     SDL_SetRenderDrawColor(sdl_renderer.get(), 0xFF, 0x00, 0x00, 0xFF);
-    block.x = Walls.x * block.w;
-    block.y = Walls.y * block.h;
+    block.x = walls.x * block.w;
+    block.y = walls.y * block.h;
     SDL_RenderFillRect(sdl_renderer.get(), &block);
 
     // Render snake's body
@@ -91,7 +91,7 @@ void Renderer::Render(Snake const snake, SDL_Point const& food, SDL_Point const&
     SDL_RenderPresent(sdl_renderer.get());
 }
 
-void Renderer::UpdateWindowTitle(int score, int fps, int countdown) {
-    std::string title{"Score: " + std::to_string(score) + "| FPS: " + std::to_string(fps) + "| Snake Times: " + std::to_string(countdown) + " seconds"};
+void Renderer::UpdateWindowTitle(int score, int fps, int startTime) {
+    std::string title{"Score: " + std::to_string(score) + "| FPS: " + std::to_string(fps) + "| Snake Times: " + std::to_string(startTime) + " seconds"};
     SDL_SetWindowTitle(sdl_window.get(), title.c_str());
 }
