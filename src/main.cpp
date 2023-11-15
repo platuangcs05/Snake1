@@ -2,7 +2,6 @@
 #include "controller.h"
 #include "game.h"
 #include "renderer.h"
-//#include "SnakeLog.h"
 
 #include <chrono>
 
@@ -18,14 +17,12 @@ int main() {
     std::unique_ptr<Renderer> renderer = std::make_unique<Renderer>(kScreenWidth, kScreenHeight, kGridWidth, kGridHeight);
     Controller controller;
     Game game(kGridWidth, kGridHeight);
-    //SnakeLog SnakeLog;
-    //SnakeLog.Start();
+
     auto startTime = std::chrono::steady_clock::now();
     
     game.Run(controller, renderer, kMsPerFrame);
     auto endTime = std::chrono::steady_clock::now();
     auto snakeTime = std::chrono::duration_cast<std::chrono::seconds>(endTime - startTime).count();
-    //SnakeLog.End(game.GetScore(), game.GetSize(), snakeTime);
 
     //[TUAN] Add time
     std::cout << "Snake Time: " << snakeTime << " seconds\n";
