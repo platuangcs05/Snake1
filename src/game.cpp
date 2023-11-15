@@ -10,7 +10,7 @@ Game::Game(std::size_t grid_width, std::size_t grid_height)
 	random_h(0, static_cast<int>(grid_height - 1)) {
 	PlaceFood();
 
-	//[TUAN] Add more food
+	//[TUAN] Add wall
 	WallFood();
 	//--------------------
 }
@@ -46,15 +46,15 @@ void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer
 		frame_duration = frame_end - frame_start;
 
 		//Tuan
-		frame_timeplay = frame_end - title_timestamp;
+		//frame_timeplay = frame_end - title_timestamp;
 
 		// After every second, update the window title.
 		//if (frame_end - title_timestamp >= 1000) {
 		if (frame_end - frame_tickinsecond >= 1000) {
 
 			//[TUAN] SnakeGame   Score / Size / HighScore / Times
-			//renderer->UpdateWindowTitle(score, frame_count, countdown);
-			renderer->UpdateWindowTitle(score, frame_count, (title_timestamp - frame_end)/1000);
+			//renderer->UpdateWindowTitle(score, countdown);
+			renderer->UpdateWindowTitle(score, (frame_end - title_timestamp)/1000);
 
 			if (countdown == 0)
 			{
