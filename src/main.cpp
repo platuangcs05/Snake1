@@ -13,7 +13,6 @@ int main() {
     constexpr std::size_t kGridWidth{32};
     constexpr std::size_t kGridHeight{32};
 
-    //[TUAN] Add 
     std::unique_ptr<Renderer> renderer = std::make_unique<Renderer>(kScreenWidth, kScreenHeight, kGridWidth, kGridHeight);
     Controller controller;
     Game game(kGridWidth, kGridHeight);

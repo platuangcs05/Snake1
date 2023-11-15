@@ -130,7 +130,7 @@ void Game::Update() {
 		PlaceWall();
 	}
 	
-	//[TUAN] Add wall
+	//[TUAN] Add food & wall
 	// Check if there's food over here
 	if (food.x == new_x && food.y == new_y) {
 		score++;

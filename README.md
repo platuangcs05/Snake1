@@ -10,10 +10,10 @@ In this project, you can build your own C++ application or extend this Snake gam
 
 ## Extend Release Note
 # Walls
-Adding walls, the game now also has a red walls. The sSake will die if it hit the walls or youself.
+Adding walls, the game now also has a red walls. The Snake will die if it hit the walls or youself.
 
 # Game Time
-Adding walls, the game now also has a red walls. The sSake will die if it hit the walls or youself.
+Adding Game Time, the game now also has a Game Time on title so that players can know and manage their playing time with the aim of achieving the highest score in the shortest time.
 
 ## Dependencies for Running Locally
 * cmake >= 3.7
