@@ -16,12 +16,12 @@ void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer
 	std::size_t target_frame_duration) {
 	Uint32 title_timestamp = SDL_GetTicks();
 	Uint32 frame_start;
-	Uint32 frame_end;
+	//Uint32 frame_end;
 	Uint32 frame_duration;
 	int frame_count = 0;
 	bool running = true;
 
-	Uint32 frame_tickinsecond = SDL_GetTicks(); //[TUAN] Add frame_tickinsecond
+	frame_tickinsecond = SDL_GetTicks(); //[TUAN] Add frame_tickinsecond
 
 	while (running) {
 		frame_start = SDL_GetTicks();
@@ -42,11 +42,11 @@ void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer
 
 		// After every second, update the window title.
 		if (frame_end - frame_tickinsecond >= 1000) {
-
+			frame_snakeTime = frame_end - title_timestamp;
 			//renderer->UpdateWindowTitle(score, countdown);
 			if (snake.alive)			
-			renderer->UpdateWindowTitle(score, (frame_end - title_timestamp)/1000);
-			
+			renderer->UpdateWindowTitle(score, frame_snakeTime/1000);
+
 			if (countdown == 0)
 			{
 				recreate = true;

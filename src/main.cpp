@@ -17,14 +17,14 @@ int main() {
     Controller controller;
     Game game(kGridWidth, kGridHeight);
 
-    auto startTime = std::chrono::steady_clock::now();
+    //auto startTime = std::chrono::steady_clock::now();
     
     game.Run(controller, renderer, kMsPerFrame);
-    auto endTime = std::chrono::steady_clock::now();
-    auto snakeTime = std::chrono::duration_cast<std::chrono::seconds>(endTime - startTime).count();
+    //auto endTime = std::chrono::steady_clock::now();
+    //auto snakeTime = std::chrono::duration_cast<std::chrono::seconds>(endTime - startTime).count();
 
     //[TUAN] Snake Time
-    std::cout << "Snake Time: " << snakeTime << " seconds\n";
+    std::cout << "Snake Time: " << game.frame_snakeTime << " seconds\n";
     std::cout << "Snake Score: " << game.GetScore() << "\n";
     std::cout << "Snake Size: " << game.GetSize() << "\n";
     return 0;

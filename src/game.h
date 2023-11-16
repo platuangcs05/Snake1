@@ -31,6 +31,10 @@ class Game {
   int countdown{3};
   bool recreate{ false };
 
+  Uint32 frame_end;
+  Uint32 frame_tickinsecond; //[TUAN] Add frame_tickinsecond
+  Uint32 frame_snakeTime;
+
   void PlaceFood();
   void PlaceWall();
   void Update();
