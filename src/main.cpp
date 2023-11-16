@@ -23,7 +23,7 @@ int main() {
     auto endTime = std::chrono::steady_clock::now();
     auto snakeTime = std::chrono::duration_cast<std::chrono::seconds>(endTime - startTime).count();
 
-    //[TUAN] Add time
+    //[TUAN] Snake Time
     std::cout << "Snake Time: " << snakeTime << " seconds\n";
     std::cout << "Snake Score: " << game.GetScore() << "\n";
     std::cout << "Snake Size: " << game.GetSize() << "\n";

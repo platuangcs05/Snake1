@@ -8,12 +8,12 @@ The Capstone Project gives you a chance to integrate what you've learned through
 
 In this project, you can build your own C++ application or extend this Snake game, following the principles you have learned throughout this Nanodegree Program. This project will demonstrate that you can independently create applications using a wide range of C++ features.
 
-## Extend Release Note
-# Walls
-Adding walls, the game now also has a red walls. The Snake will die if it hit the walls or youself.
 
-# Game Time
-Adding Game Time, the game now also has a Game Time on title so that players can know and manage their playing time with the aim of achieving the highest score in the shortest time.
+## Build/Running Instructions
+1. Clone this repo.
+2. Make a build directory in the top level directory: `mkdir build && cd build`
+3. Compile: `cmake .. && make`
+4. Run it: `./SnakeGame`.
 
 ## Dependencies for Running Locally
 * cmake >= 3.7
@@ -30,12 +30,26 @@ Adding Game Time, the game now also has a Game Time on title so that players can
   * Mac: same deal as make - [install Xcode command line tools](https://developer.apple.com/xcode/features/)
   * Windows: recommend using [MinGW](http://www.mingw.org/)
 
-## Basic Build Instructions
 
-1. Clone this repo.
-2. Make a build directory in the top level directory: `mkdir build && cd build`
-3. Compile: `cmake .. && make`
-4. Run it: `./SnakeGame`.
+## Features added to the game
+# Features 1: Add Walls
+Expected behavior
+  * Adding walls, the game now also has a red walls.
+  * The wall will change position after 3 seconds.
+  * The Snake will die if it hit the walls or youself.
+
+# Features 2: Add Game Time
+Expected behavior
+  * Adding Game Time, the game now also has a Game Time on title so that players can know and manage their playing time with the aim of achieving the highest score in the shortest time.
+  * Game Time will stop when the snake dies.
+  * main.cpp line 27: Game Time will be displayed as Snake Time together with Snake Score, Snake Size.
+
+
+
+
+
+
+
 
 ## CC Attribution-ShareAlike 4.0 International
 

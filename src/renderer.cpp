@@ -10,7 +10,6 @@ Renderer::Renderer(const std::size_t screen_width,
     grid_width(grid_width),
     grid_height(grid_height),
 
-    //[TUAN] Add 
     sdl_window(nullptr, SDL_DestroyWindow),
     sdl_renderer(nullptr, SDL_DestroyRenderer) {
     // Initialize SDL
@@ -30,7 +29,6 @@ Renderer::Renderer(const std::size_t screen_width,
     }
 
     // Create renderer
-    //[TUAN] Add 
     sdl_renderer.reset(SDL_CreateRenderer(sdl_window.get(), -1, SDL_RENDERER_ACCELERATED));
     if (nullptr == sdl_renderer) {
         std::cerr << "Renderer could not be created.\n";

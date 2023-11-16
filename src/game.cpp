@@ -9,10 +9,7 @@ Game::Game(std::size_t grid_width, std::size_t grid_height)
 	random_w(0, static_cast<int>(grid_width - 1)),
 	random_h(0, static_cast<int>(grid_height - 1)) {
 	PlaceFood();
-
-	//[TUAN] Add wall
-	PlaceWall();
-	//--------------------
+	PlaceWall(); //[TUAN] Add wall
 }
 
 void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer,
@@ -24,8 +21,7 @@ void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer
 	int frame_count = 0;
 	bool running = true;
 
-	//Tuan
-	Uint32 frame_tickinsecond = SDL_GetTicks();
+	Uint32 frame_tickinsecond = SDL_GetTicks(); //[TUAN] Add frame_tickinsecond
 
 	while (running) {
 		frame_start = SDL_GetTicks();
@@ -33,8 +29,7 @@ void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer
 		// Input, Update, Render - the main game loop.
 		controller.HandleInput(running, snake);
 
-		//[TUAN] Add wall
-		renderer->Render(snake, food, wall);
+		renderer->Render(snake, food, wall); //[TUAN] Add wall
 		//--------------------
 
 		Update();
@@ -45,14 +40,13 @@ void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer
 		frame_count++;
 		frame_duration = frame_end - frame_start;
 
-		//Tuan
 		// After every second, update the window title.
-		//if (frame_end - title_timestamp >= 1000) {
 		if (frame_end - frame_tickinsecond >= 1000) {
 
 			//renderer->UpdateWindowTitle(score, countdown);
+			if (snake.alive)			
 			renderer->UpdateWindowTitle(score, (frame_end - title_timestamp)/1000);
-
+			
 			if (countdown == 0)
 			{
 				recreate = true;
@@ -60,8 +54,6 @@ void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer
 			}
 			countdown--;
 			frame_count = 0;
-
-			//title_timestamp = frame_end;
 			frame_tickinsecond = frame_end;
 		}
 
@@ -89,8 +81,7 @@ void Game::PlaceFood() {
 	}
 }
 
-//[TUAN] Add wall
-//--------------------
+//[TUAN] Call PlaceWall
 void Game::PlaceWall() {	
     std::uniform_real_distribution<double> distribution(0.0, 1.0);
     bool bCheck = distribution(engine) < PROBABILITY / 100.0;
@@ -108,7 +99,6 @@ void Game::PlaceWall() {
         bCheck = distribution(engine) < PROBABILITY / 100.0;
     }
 }
-//--------------------
 
 void Game::Update() {
 	if (!snake.alive)
@@ -119,10 +109,8 @@ void Game::Update() {
 	int new_x = static_cast<int>(snake.head_x);
 	int new_y = static_cast<int>(snake.head_y);
 
-	//[TUAN] Add wall
-	//--------------------
-	int newWall_x = static_cast<int>(snake.head_x);
-	int newWall_y = static_cast<int>(snake.head_y);
+	int newWall_x = static_cast<int>(snake.head_x); //[TUAN] Add wall
+	int newWall_y = static_cast<int>(snake.head_y); //[TUAN] Add wall
 
 	if (recreate)
 	{
@@ -130,7 +118,6 @@ void Game::Update() {
 		PlaceWall();
 	}
 	
-	//[TUAN] Add food & wall
 	// Check if there's food over here
 	if (food.x == new_x && food.y == new_y) {
 		score++;
