@@ -2,7 +2,7 @@
 #include <cmath>
 #include <iostream>
 
-void Snake::SetStartingSpeed()
+void Snake::SetSpeed()
 {
   float userSpeed;
   char rangeBuffer[25];

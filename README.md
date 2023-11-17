@@ -48,6 +48,13 @@ Expected behavior
   * Game Time will be displayed as Snake Time together with Snake Score, Snake Size.
     main.cpp line 27: Using OOP
 
+# Features 3: Add Game Time
+Expected behavior
+
+# Features 4: Add Game Time
+Expected behavior
+
+
 
 ## CC Attribution-ShareAlike 4.0 International
 

@@ -16,13 +16,13 @@ class Game {
 
   int GetScore() const;
   int GetSize() const;
-  void UpdateStartSpeed(); //[TUAN] Add speed
+  void SnakeSpeed(); //[TUAN] Add speed
 
   Uint32 frame_end;
   Uint32 frame_tickinsecond; //[TUAN] Add frame_tickinsecond
   Uint32 frame_snakeTime;
 
-  bool _poisoned;
+  bool _magicked;
 
  private:
   Snake snake;
