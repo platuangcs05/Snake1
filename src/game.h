@@ -22,8 +22,6 @@ class Game {
   Uint32 frame_tickinsecond; //[TUAN] Add frame_tickinsecond
   Uint32 frame_snakeTime;
 
-  bool _poisoned;
-
  private:
   Snake snake;
   SDL_Point food;
@@ -35,7 +33,7 @@ class Game {
   std::uniform_int_distribution<int> random_h;
 
   int score{0};
-  int countdown{3};
+  //int countdown{3};
   bool recreate{ false };
 
   void PlaceFood();

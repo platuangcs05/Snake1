@@ -14,19 +14,11 @@ Game::Game(std::size_t grid_width, std::size_t grid_height)
 	PlaceWall(); //[TUAN] Add wall
 }
 
-//Tuan Add Speed
-// poison timer will return snake to normal after 3 seconds
-void TimerThread(bool *poisoned) {
-    std::this_thread::sleep_for(std::chrono::seconds(5));
-    // get back to normal after 5 seconds
-    *poisoned = false;
-}
-
 void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer,
 	std::size_t target_frame_duration) {
 	Uint32 title_timestamp = SDL_GetTicks();
 	Uint32 frame_start;
-	Uint32 frame_end;
+	//Uint32 frame_end;
 	Uint32 frame_duration;
 	int frame_count = 0;
 	bool running = true;
@@ -37,12 +29,12 @@ void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer
 		frame_start = SDL_GetTicks();
 
 		// Input, Update, Render - the main game loop.
-		controller.HandleInput(running, snake, *this);
-		Update();
-		renderer->Render(snake, food, wall, &_poisoned); //[TUAN] Add wall
+		controller.HandleInput(running, snake);
+
+		renderer->Render(snake, food, wall); //[TUAN] Add wall
 		//--------------------
 
-
+		Update();
 		frame_end = SDL_GetTicks();
 
 		// Keep track of how long each loop through the input/update/render cycle
@@ -129,11 +121,6 @@ void Game::Update() {
 		PlaceWall();
 	}
 
-	//Tuan Add
-	std::random_device rd;  //Will be used to obtain a seed for the random number engine
-	std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
-	std::uniform_int_distribution<> dis(1, 10);
-	
 	// Check if there's food over here
 	if (food.x == new_x && food.y == new_y) {
 		score++;
@@ -142,12 +129,6 @@ void Game::Update() {
 		snake.GrowBody();
 		snake.speed += 0.02;
 
-		if(dis(gen) <= 2){
-			_poisoned = true;
-      		// resolves 5 seconds later
-      		std::thread poisonTimer(TimerThread, &_poisoned);
-      		poisonTimer.detach();
-    	}
 	}
 
 	// Check if there's wall here
