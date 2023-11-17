@@ -18,6 +18,8 @@ class Game {
   int GetSize() const;
   void SnakeSpeed(); //[TUAN] Add speed
 
+  bool _poisoned;
+
   Uint32 frame_end;
   Uint32 frame_tickinsecond; //[TUAN] Add frame_tickinsecond
   Uint32 frame_snakeTime;
@@ -27,8 +29,6 @@ class Game {
   SDL_Point food;
   SDL_Point wall;
   
-  bool _poisoned;
-
   std::random_device dev;
   std::mt19937 engine;
   std::uniform_int_distribution<int> random_w;
