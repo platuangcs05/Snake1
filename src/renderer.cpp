@@ -64,9 +64,9 @@ void Renderer::Render(Snake const snake, SDL_Point const& food, SDL_Point const&
     // Render snake's body
   // if snake get poisoned render a greenish body
   if(*poisoned){
-    SDL_SetRenderDrawColor(sdl_renderer, 0xBE, 0xD3, 0x3D, 0xFF); // greenish color
+    SDL_SetRenderDrawColor(sdl_renderer.get(), 0xBE, 0xD3, 0x3D, 0xFF); // greenish color
   }else{
-    SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+    SDL_SetRenderDrawColor(sdl_renderer.get(), 0xFF, 0xFF, 0xFF, 0xFF);
   }
 
     for (SDL_Point const& point : snake.body) {
