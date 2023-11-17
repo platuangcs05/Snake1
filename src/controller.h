@@ -18,7 +18,7 @@ class Controller {
   // the game isntance
 //   Game game;
   void ChangeDirection(Snake &snake, Snake::Direction input,
-                       Snake::Direction opposite, bool &magic) const;
+                       Snake::Direction opposite, bool &poison) const;
 };
 
 #endif

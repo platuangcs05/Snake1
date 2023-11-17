@@ -22,7 +22,7 @@ class Game {
   Uint32 frame_tickinsecond; //[TUAN] Add frame_tickinsecond
   Uint32 frame_snakeTime;
 
-  bool _magicked;
+  bool _poisoned;
 
  private:
   Snake snake;

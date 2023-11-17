@@ -16,11 +16,11 @@ Game::Game(std::size_t grid_width, std::size_t grid_height)
 }
 
 //Tuan Add Speed
-// magic timer will return snake to normal after 3 seconds
-void TimerThread(bool *magicked) {
+// poison timer will return snake to normal after 3 seconds
+void TimerThread(bool *poisoned) {
     std::this_thread::sleep_for(std::chrono::seconds(5));
     // get back to normal after 5 seconds
-    *magicked = false;
+    *poisoned = false;
 }
 
 void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer,
@@ -40,7 +40,7 @@ void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer
 		// Input, Update, Render - the main game loop.
 		controller.HandleInput(running, snake, *this);
 
-		renderer->Render(snake, food, wall, &_magicked); //[TUAN] Add wall
+		renderer->Render(snake, food, wall, &_poisoned); //[TUAN] Add wall
 		//--------------------
 
 		Update();
@@ -144,10 +144,10 @@ void Game::Update() {
 		snake.speed += 0.02;
 
 		if(dis(gen) <= 2){
-			_magicked = true;
+			_poisoned = true;
       		// resolves 5 seconds later
-      		std::thread magicTime(TimerThread, &_magicked);
-      		magicTime.detach();
+      		std::thread poisonTimer(TimerThread, &_poisoned);
+      		poisonTimer.detach();
     	}
 	}
 
