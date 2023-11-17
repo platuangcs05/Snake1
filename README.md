@@ -35,20 +35,18 @@ In this project, you can build your own C++ application or extend this Snake gam
 # Features 1: Add Walls
 Expected behavior
   * Adding walls, the game now also has a red walls.
-  * The wall will change position after 3 seconds.
+    game.cpp line 12,80: Using PlaceWall Functions
+
   * The Snake will die if it hit the walls or youself.
+    game.cpp line 126: Using if conditions
 
 # Features 2: Add Game Time
 Expected behavior
   * Adding Game Time, the game now also has a Game Time on title so that players can know and manage their playing time with the aim of achieving the highest score in the shortest time.
-  * Game Time will stop when the snake dies.
-  * main.cpp line 27: Game Time will be displayed as Snake Time together with Snake Score, Snake Size.
+    game.cpp line 45: Using while if for loop
 
-
-
-
-
-
+  * Game Time will be displayed as Snake Time together with Snake Score, Snake Size.
+    main.cpp line 27: Using OOP
 
 
 ## CC Attribution-ShareAlike 4.0 International

@@ -2,6 +2,33 @@
 #include <cmath>
 #include <iostream>
 
+//Tuan Add Speed
+void Snake::SetStartingSpeed()
+{
+  float userSpeed;
+  char rangeBuffer[25];
+  char userAnswer[25];
+  sprintf(rangeBuffer, "%0.1f and %0.1f", minStartSpeed, maxStartSpeed);
+  std::string rangeStr(rangeBuffer);
+
+  std::cout << "What would you like the starting speed of the snake?" << std::endl;
+  std::cout << "Select a number between " << rangeStr << std::endl;
+
+  while (true)
+  {
+    int isNum = scanf("%f", &userSpeed);
+    if (isNum)
+    {
+      if (userSpeed >= minStartSpeed && userSpeed <= maxStartSpeed)
+      {
+        speed = userSpeed;
+        return;
+      }
+    }
+    std::cerr << "\n\n\nOoops!! Please provide a valid decimal between " << rangeStr << std::endl;
+  };
+}
+
 void Snake::Update() {
   SDL_Point prev_cell{
       static_cast<int>(head_x),

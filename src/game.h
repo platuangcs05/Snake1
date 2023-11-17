@@ -16,6 +16,11 @@ class Game {
 
   int GetScore() const;
   int GetSize() const;
+  void UpdateStartSpeed(); //[TUAN] Add speed
+
+  Uint32 frame_end;
+  Uint32 frame_tickinsecond; //[TUAN] Add frame_tickinsecond
+  Uint32 frame_snakeTime;
 
  private:
   Snake snake;
@@ -30,10 +35,6 @@ class Game {
   int score{0};
   int countdown{3};
   bool recreate{ false };
-
-  Uint32 frame_end;
-  Uint32 frame_tickinsecond; //[TUAN] Add frame_tickinsecond
-  Uint32 frame_snakeTime;
 
   void PlaceFood();
   void PlaceWall();

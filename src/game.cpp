@@ -41,18 +41,13 @@ void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer
 		frame_duration = frame_end - frame_start;
 
 		// After every second, update the window title.
+		
 		if (frame_end - frame_tickinsecond >= 1000) {
-			frame_snakeTime = frame_end - title_timestamp;
-			//renderer->UpdateWindowTitle(score, countdown);
-			if (snake.alive)			
-			renderer->UpdateWindowTitle(score, frame_snakeTime/1000);
-
-			if (countdown == 0)
-			{
-				recreate = true;
-				countdown = 3;
+			if (snake.alive)  {
+			frame_snakeTime = (frame_end - title_timestamp)/1000;
+			renderer->UpdateWindowTitle(score, frame_snakeTime);
 			}
-			countdown--;
+			
 			frame_count = 0;
 			frame_tickinsecond = frame_end;
 		}
@@ -64,6 +59,12 @@ void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer
 			SDL_Delay(target_frame_duration - frame_duration);
 		}
 	}
+}
+
+//Tuan Add Speed
+void Game::UpdateStartSpeed()
+{
+  snake.SetStartingSpeed();
 }
 
 void Game::PlaceFood() {

@@ -19,6 +19,8 @@ int main() {
 
     //auto startTime = std::chrono::steady_clock::now();
     
+    game.UpdateStartSpeed(); //Tuan Add Speed
+    
     game.Run(controller, renderer, kMsPerFrame);
     //auto endTime = std::chrono::steady_clock::now();
     //auto snakeTime = std::chrono::duration_cast<std::chrono::seconds>(endTime - startTime).count();
