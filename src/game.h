@@ -26,6 +26,8 @@ class Game {
   Snake snake;
   SDL_Point food;
   SDL_Point wall;
+  
+  bool _poisoned;
 
   std::random_device dev;
   std::mt19937 engine;

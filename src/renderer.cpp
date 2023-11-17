@@ -40,7 +40,7 @@ Renderer::~Renderer() {
     // smart pointers will automatically call SDL_DestroyWindow and SDL_Quit
 }
 
-void Renderer::Render(Snake const snake, SDL_Point const& food, SDL_Point const& wall) {
+void Renderer::Render(Snake const snake, SDL_Point const& food, SDL_Point const& wall, bool *poisoned) {
     SDL_Rect block;
     block.w = screen_width / grid_width;
     block.h = screen_height / grid_height;
@@ -62,7 +62,13 @@ void Renderer::Render(Snake const snake, SDL_Point const& food, SDL_Point const&
     SDL_RenderFillRect(sdl_renderer.get(), &block);
 
     // Render snake's body
-    SDL_SetRenderDrawColor(sdl_renderer.get(), 0xFF, 0xFF, 0xFF, 0xFF);
+    // if snake get poisoned render a greenish body
+    if(*poisoned){
+        SDL_SetRenderDrawColor(sdl_renderer, 0xBE, 0xD3, 0x3D, 0xFF); // greenish color
+    }else{
+        SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+    }
+
     for (SDL_Point const& point : snake.body) {
         block.x = point.x * block.w;
         block.y = point.y * block.h;
