@@ -5,7 +5,6 @@
 #include <chrono>
 #include <future>
 
-
 Game::Game(std::size_t grid_width, std::size_t grid_height)
 	: snake(grid_width, grid_height),
 	engine(dev()),
@@ -27,7 +26,7 @@ void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer
 	std::size_t target_frame_duration) {
 	Uint32 title_timestamp = SDL_GetTicks();
 	Uint32 frame_start;
-	//Uint32 frame_end;
+	Uint32 frame_end;
 	Uint32 frame_duration;
 	int frame_count = 0;
 	bool running = true;
@@ -39,11 +38,11 @@ void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer
 
 		// Input, Update, Render - the main game loop.
 		controller.HandleInput(running, snake, *this);
-
+		Update();
 		renderer->Render(snake, food, wall, &_poisoned); //[TUAN] Add wall
 		//--------------------
 
-		Update();
+
 		frame_end = SDL_GetTicks();
 
 		// Keep track of how long each loop through the input/update/render cycle
