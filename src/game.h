@@ -22,11 +22,12 @@ class Game {
   Uint32 frame_tickinsecond; //[TUAN] Add frame_tickinsecond
   Uint32 frame_snakeTime;
 
+  bool _poisoned;
+
  private:
   Snake snake;
   SDL_Point food;
   SDL_Point wall;
-  bool _poisoned;
 
   std::random_device dev;
   std::mt19937 engine;

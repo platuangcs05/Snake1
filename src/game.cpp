@@ -1,6 +1,9 @@
 #include "game.h"
 #include <iostream>
 #include "SDL.h"
+#include <thread>
+#include <chrono>
+#include <future>
 
 
 Game::Game(std::size_t grid_width, std::size_t grid_height)
@@ -36,7 +39,7 @@ void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer
 		frame_start = SDL_GetTicks();
 
 		// Input, Update, Render - the main game loop.
-		controller.HandleInput(running, snake);
+		controller.HandleInput(running, snake, *this);
 
 		renderer->Render(snake, food, wall, &_poisoned); //[TUAN] Add wall
 		//--------------------
