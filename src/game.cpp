@@ -15,11 +15,11 @@ Game::Game(std::size_t grid_width, std::size_t grid_height)
 }
 
 
-// Poison timer, if the snake get poisoned the thread 
-// will return snake to normal after 5 seconds
+// Adding Poison spell
+// will return snake to normal after 10 seconds
 void TimerThread(bool *poisoned) {
-    std::this_thread::sleep_for(std::chrono::seconds(5));
-    // get back to normal after 5 seconds
+    std::this_thread::sleep_for(std::chrono::seconds(10));
+    // get back to normal after 10 seconds
     *poisoned = false;
 }
 

@@ -9,7 +9,7 @@ The Capstone Project gives you a chance to integrate what you've learned through
 In this project, you can build your own C++ application or extend this Snake game, following the principles you have learned throughout this Nanodegree Program. This project will demonstrate that you can independently create applications using a wide range of C++ features.
 
 
-## Build/Running Instructions a
+## Build/Running Instructions
 1. Clone this repo.
 2. Make a build directory in the top level directory: `mkdir build && cd build`
 3. Compile: `cmake .. && make`
@@ -32,29 +32,47 @@ In this project, you can build your own C++ application or extend this Snake gam
 
 
 ## Features added to the game
-# Features 1: Add Walls
+# Features 1: Add user input the SpeedGame
+Expected behavior
+  * Adding SnakeSpeed, the user can input which SnakeSpeed they want to play a game.
+    game.cpp line 77
+
+# Features 2: Add Walls
 Expected behavior
   * Adding walls, the game now also has a red walls.
-    game.cpp line 12,80: Using PlaceWall Functions
-
   * The Snake will die if it hit the walls or youself.
-    game.cpp line 126: Using if conditions
-
-# Features 2: Add Game Time
-Expected behavior
-  * Adding Game Time, the game now also has a Game Time on title so that players can know and manage their playing time with the aim of achieving the highest score in the shortest time.
-    game.cpp line 45: Using while if for loop
-
-  * Game Time will be displayed as Snake Time together with Snake Score, Snake Size.
-    main.cpp line 27: Using OOP
+    game.cpp line 12,80, 126
 
 # Features 3: Add Game Time
 Expected behavior
+  * Adding Game Time, the game now also has a Game Time on title so that players can know and manage their playing time with the aim of achieving the highest score in the shortest time.
+    game.cpp line 45
 
-# Features 4: Add Game Time
+  * Game Time will be displayed as Snake Time together with Snake Score, Snake Size.
+    main.cpp line 27
+
+# Features 4: Add spells
 Expected behavior
+  * Adding spells, Players will be surprised when encountering spells. 
+    The game will use Poison Spell, and will develop many other spells later.
+    Spell duration is 10 seconds.
+    When Snake eat a Poison Spell, user cannot control the snake as they want.
+    game.cpp line 18
 
+## Rubric Points
+# Loops, Functions, I/O
+  * The project code is clearly organized into functions.
+  * The project accepts user input and processes the input.
 
+# Object Oriented Programming
+  * All class data members are explicitly specified as public, protected, or private.
+  * Classes are organized with attributes to hold data and methods to perform tasks.
+
+# Memory Management
+  * The project makes use of references in function declarations.
+
+# Concurrency
+  * The project uses multithreading.
 
 ## CC Attribution-ShareAlike 4.0 International
 
