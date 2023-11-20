@@ -59,7 +59,7 @@ Expected behavior
     When Snake eat a Poison Spell, user cannot control the snake as they want.
     game.cpp line 18
 
-## Rubric Points
+## Rubric Description
 # Loops, Functions, I/O
   * The project code is clearly organized into functions.
   * The project accepts user input and processes the input.
