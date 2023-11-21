@@ -27,7 +27,7 @@ void SnakeLog::Start() {
     auto currentTime = std::chrono::steady_clock::now();
     std::time_t time = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());  
     std::lock_guard<std::mutex> lock(logMutex);
-    logFile.get() << "[Program initiated at]: " << std::ctime(&time);
+    logFile.get() << "[Game initiated at]: " << std::ctime(&time);
 }
 
 void SnakeLog::End(int score, int size, long totalTime) {
@@ -35,10 +35,10 @@ void SnakeLog::End(int score, int size, long totalTime) {
     std::time_t time = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());  
     std::lock_guard<std::mutex> lock(logMutex);
     logFile.get() << "..................................................................." << std::endl;
-    logFile.get() << "[Program completion time]: " << std::ctime(&time);
-    logFile.get() << "[Execution time]: " << totalTime << " seconds" << std::endl;
-    logFile.get() << "[Final score achieved]: " << score << std::endl;
-    logFile.get() << "[Final snake size]: " << size << std::endl;
+    logFile.get() << "Game completion time: " << std::ctime(&time);
+    logFile.get() << "Snake Time: " << totalTime << " seconds" << std::endl;
+    logFile.get() << "Snake Score: " << score << std::endl;
+    logFile.get() << "Snake Size: " << size << std::endl;
     logFile.get() << "..................................................................." << std::endl;
 }
 

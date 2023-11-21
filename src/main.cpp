@@ -16,20 +16,17 @@ int main() {
 
     std::unique_ptr<Renderer> renderer = std::make_unique<Renderer>(kScreenWidth, kScreenHeight, kGridWidth, kGridHeight);
     Controller controller;
-    Game game(kGridWidth, kGridHeight);#
+    Game game(kGridWidth, kGridHeight);
+
+    //[TUAN] Add log
     SnakeLog SnakeLog;
     SnakeLog.Start();
-
-    //auto startTime = std::chrono::steady_clock::now();
     
     game.SnakeSpeed(); //Tuan Add Speed
     
     game.Run(controller, renderer, kMsPerFrame);
-    //auto endTime = std::chrono::steady_clock::now();
-    //auto snakeTime = std::chrono::duration_cast<std::chrono::seconds>(endTime - startTime).count();
 
     //[TUAN] Snake Time
-
     SnakeLog.End(game.GetScore(), game.GetSize(), game.frame_snakeTime);
 
     std::cout << "Snake Time: " << game.frame_snakeTime << " seconds\n";

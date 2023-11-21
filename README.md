@@ -49,7 +49,7 @@ Expected behavior
     game.cpp line 45
 
   * Game Time will be displayed as Snake Time together with Snake Score, Snake Size.
-    main.cpp line 27
+    main.cpp line 30
 
 # Features 4: Add spells
 Expected behavior
@@ -58,6 +58,11 @@ Expected behavior
     Spell duration is 10 seconds.
     When Snake eat a Poison Spell, user cannot control the snake as they want.
     game.cpp line 18
+
+# Features 5: Add Log
+Expected behavior
+  * Adding log, the game will be logged the game date, Snake Time, Snake Score, Snake size in the `SnakeLog.txt` file.
+  main.cpp line 22
 
 ## Rubric Description
 # Loops, Functions, I/O
@@ -73,6 +78,7 @@ Expected behavior
 
 # Concurrency
   * The project uses multithreading.
+  * A mutex or lock is used in the project.
 
 ## CC Attribution-ShareAlike 4.0 International
 
