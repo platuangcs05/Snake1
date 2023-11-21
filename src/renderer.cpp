@@ -37,6 +37,8 @@ Renderer::Renderer(const std::size_t screen_width,
 }
 
 Renderer::~Renderer() {
+    //SDL_DestroyWindow(sdl_window);
+    //SDL_Quit();
     // smart pointers will automatically call SDL_DestroyWindow and SDL_Quit
 }
 

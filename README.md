@@ -75,6 +75,8 @@ Expected behavior
 
 # Memory Management
   * The project makes use of references in function declarations.
+  * The project uses destructors appropriately.
+  * The project uses smart pointers instead of raw pointers.
 
 # Concurrency
   * The project uses multithreading.
