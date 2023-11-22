@@ -56,7 +56,7 @@ Expected behavior
   * Adding spells, Players will be surprised when encountering spells. 
     The game will use Poison Spell, and will develop many other spells later.
     Spell duration is 10 seconds.
-    When Snake eat a Poison Spell, user cannot control the snake as they want.
+    Poisoned snake will become green snake and user cannot control the snake as they want.
     game.cpp line 18
 
 # Features 5: Add Log
