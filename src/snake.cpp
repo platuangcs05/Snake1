@@ -3,9 +3,7 @@
 #include <iostream>
 
 /**
- * @brief the user can input which SnakeSpeed they want to play a game.
- * Input: 
- * 
+ * @brief SetSpeed: the user can input which SnakeSpeed they want to play a game.
  */
 
 void Snake::SetSpeed()

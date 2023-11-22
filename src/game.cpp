@@ -14,9 +14,10 @@ Game::Game(std::size_t grid_width, std::size_t grid_height)
 	PlaceWall(); //[TUAN] Add wall
 }
 
+/**
+ * @brief TimerThread: Adding Poison spell, will return snake to normal after 10 seconds
+ */
 
-// Adding Poison spell
-// will return snake to normal after 10 seconds
 void TimerThread(bool *poisoned) {
     std::this_thread::sleep_for(std::chrono::seconds(10));
     // get back to normal after 10 seconds
@@ -73,7 +74,9 @@ void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer
 	}
 }
 
-//Tuan Add Speed
+/**
+ * @brief SnakeSpeed: Add Speed
+ */
 void Game::SnakeSpeed()
 {
   snake.SetSpeed();
@@ -94,7 +97,9 @@ void Game::PlaceFood() {
 	}
 }
 
-//[TUAN] Call PlaceWall
+/**
+ * @brief PlaceWall: Call PlaceWall
+ */
 void Game::PlaceWall() {	
     std::uniform_real_distribution<double> distribution(0.0, 1.0);
     bool bCheck = distribution(engine) < PROBABILITY / 100.0;
