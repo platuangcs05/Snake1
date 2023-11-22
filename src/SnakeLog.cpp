@@ -27,7 +27,7 @@ void SnakeLog::Start() {
     auto currentTime = std::chrono::steady_clock::now();
     std::time_t time = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());  
     std::lock_guard<std::mutex> lock(logMutex);
-    logFile.get() << "[Game initiated at]: " << std::ctime(&time);
+    logFile.get() << "Game initiated at: " << std::ctime(&time);
 }
 
 void SnakeLog::End(int score, int size, long totalTime) {
