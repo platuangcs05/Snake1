@@ -66,23 +66,70 @@ Expected behavior
     main.cpp line 22
     Snakelog.cpp line 6
 
+
 ## Rubric Description
-# Loops, Functions, I/O
-  * The project code is clearly organized into functions.
-  * The project accepts user input and processes the input.
+# Loops, Functions, I/O - meet at least 2 criteria
+  * Rubric Point 1/4: The project demonstrates an understanding of C++ functions and control structures.
+    Game.cpp line 82
+    PlaceFood()
+    This function meet this criteria.
 
-# Object Oriented Programming
-  * All class data members are explicitly specified as public, protected, or private.
-  * Classes are organized with attributes to hold data and methods to perform tasks.
+  * Rubric 2/4: The project accepts user input and processes the input.
+    In addition to controlling the snake, the game can also receive new types of input from the player.
+      Snake.cpp line 5
+      SetSpeed()
+      This function meet this criteria. The user can input which SnakeSpeed they want to play a game.
 
-# Memory Management
-  * The project makes use of references in function declarations.
-  * The project uses destructors appropriately.
-  * The project uses smart pointers instead of raw pointers.
 
-# Concurrency
-  * The project uses multithreading.
-  * A mutex or lock is used in the project.
+# Object Oriented Programming - meet at least 3 criteria
+  * Rubric Point 1/6: One or more classes are added to the project with appropriate access specifiers for class members.
+      All class data members are explicitly specified as public, protected, or private.
+        Snake, SnakeLog, Game meet this criteria. These class using access specifiers for class members.
+
+  * Rubric Point 2/6: Class constructors utilize member initialization lists.
+    All class members that are set to argument values are initialized through member initialization lists.
+        Snake.h line 14-17
+          Class Snake meet this criteria.
+
+  * Rubric Point 3/6: Classes abstract implementation details from their interfaces.
+    All class member functions document their effects, either through function names, comments, or formal documentation.
+      Snake.cpp line 6
+      Using doxygen to explain this function.
+
+
+# Memory Management - meet at least 3 criteria
+  * Rubric Point 1/6: The project makes use of references in function declarations.
+    At least two variables are defined as references, or two functions use pass-by-reference in the project code.
+      controller.cpp line 19
+      HandleInput, ChangeDirection
+      These functions use pass-by-reference.
+
+  * Rubric Point 2/6: The project uses destructors appropriately.
+    At least one class that uses unmanaged dynamically allocated memory, along with any class that otherwise needs to modify state upon the termination of an object, uses a destructor.
+      Snakelog.cpp line 6
+      ScopedLogFile::~ScopedLogFile()
+      Using destructors meet this criteria.
+
+  * Rubric Point 3/6: The project uses smart pointers instead of raw pointers.
+    The project uses at least one smart pointer: unique_ptr, shared_ptr, or weak_ptr.
+      main.cpp line 17
+      std::unique_ptr<Renderer> renderer
+      Using smart pointer: unique_ptr meet this criteria.
+
+
+# Concurrency - meet at least 2 criteria
+  * Rubric Point 1/4: The project uses multithreading.
+    The project uses multiple threads or async tasks in the execution.
+      game.cpp line 20
+      TimerThread
+      Using async tasks to turn off spell every 10 seconds.
+
+  * Rubric Point 2/4: A mutex or lock is used in the project.
+    A mutex or lock (e.g. std::lock_guard or `std::unique_lock) is used to protect data that is shared across multiple threads in the project code.
+      Snakelog.cpp line 29
+      std::lock_guard<std::mutex> lock(logMutex)
+      Use to ensure that only one thread accesses the file at a time.
+
 
 ## CC Attribution-ShareAlike 4.0 International
 

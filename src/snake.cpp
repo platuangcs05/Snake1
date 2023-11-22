@@ -2,6 +2,12 @@
 #include <cmath>
 #include <iostream>
 
+/**
+ * @brief the user can input which SnakeSpeed they want to play a game.
+ * Input: 
+ * 
+ */
+
 void Snake::SetSpeed()
 {
   float userSpeed;
