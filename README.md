@@ -61,8 +61,10 @@ Expected behavior
 
 # Features 5: Add Log
 Expected behavior
-  * Adding log, the game will be logged the game date, Snake Time, Snake Score, Snake size in the `SnakeLog.txt` file.
-  main.cpp line 22
+  * Adding log, the game will be logged the game date, Snake Time, Snake Score, Snake size in the `SnakeLog.txt` file. 
+    And closing the log file when the game is end.
+    main.cpp line 22
+    Snakelog.cpp line 6
 
 ## Rubric Description
 # Loops, Functions, I/O
