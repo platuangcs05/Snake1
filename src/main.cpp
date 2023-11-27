@@ -1,28 +1,30 @@
 #include <iostream>
+#include <chrono>
+
 #include "controller.h"
 #include "game.h"
 #include "renderer.h"
 #include "SnakeLog.h"
 
-#include <chrono>
-
 int main() {
-    constexpr std::size_t kFramesPerSecond{60};
+    constexpr std::size_t kFramesPerSecond{60}; //constexpr hang so
     constexpr std::size_t kMsPerFrame{1000 / kFramesPerSecond};
     constexpr std::size_t kScreenWidth{600};
     constexpr std::size_t kScreenHeight{600};
     constexpr std::size_t kGridWidth{32};
     constexpr std::size_t kGridHeight{32};
 
+    //smart pointer tu dong delete, new & delete
     std::unique_ptr<Renderer> renderer = std::make_unique<Renderer>(kScreenWidth, kScreenHeight, kGridWidth, kGridHeight);
-    Controller controller;
-    Game game(kGridWidth, kGridHeight);
-
-    //[TUAN] Add log
-    SnakeLog SnakeLog;
-    SnakeLog.Start();
     
-    game.SnakeSpeed(); //Tuan Add Speed
+    // class tao kieu du lieu, bien tao ra tu class goi object,
+    Controller controller; //stack
+    Game game(kGridWidth, kGridHeight); //stack
+
+    SnakeLog SnakeLog; // //stack
+    SnakeLog.Start(); //ham trong class la method (API)
+    
+    game.SnakeSpeed(); // Cach goi
     
     game.Run(controller, renderer, kMsPerFrame);
 
