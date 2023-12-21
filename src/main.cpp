@@ -18,12 +18,13 @@ int main() {
     std::unique_ptr<Renderer> renderer = std::make_unique<Renderer>(kScreenWidth, kScreenHeight, kGridWidth, kGridHeight);
     
     // class tao kieu du lieu, bien tao ra tu class goi object,
-    Controller controller; //stack
+    Controller controller; //stack goi constructer
     Game game(kGridWidth, kGridHeight); //stack
 
     SnakeLog SnakeLog; // //stack
     SnakeLog.Start(); //ham trong class la method (API)
     
+    game.SnakeName(); // Cach goi
     game.SnakeSpeed(); // Cach goi
     
     game.Run(controller, renderer, kMsPerFrame);

@@ -2,7 +2,7 @@
 #define CONTROLLER_H
 
 #include "snake.h"
-// #include "game.h"
+
 class Game;
 
 class Controller {

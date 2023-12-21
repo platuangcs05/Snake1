@@ -10,7 +10,7 @@ class Renderer {
 public:
     Renderer(const std::size_t screen_width, const std::size_t screen_height,
         const std::size_t grid_width, const std::size_t grid_height);
-    ~Renderer();
+    ~Renderer(); // hàm disstructer huy object
 
     void Render(Snake const snake, SDL_Point const& food, SDL_Point const& poisonousFood, bool *poisoned);
     void UpdateWindowTitle(int score, int startTime);

@@ -77,6 +77,13 @@ void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer
 /**
  * @brief SnakeSpeed: Add Speed
  */
+
+void Game::SnakeName()
+{
+  snake.SetName();
+}
+
+
 void Game::SnakeSpeed()
 {
   snake.SetSpeed();

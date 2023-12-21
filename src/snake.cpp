@@ -1,10 +1,17 @@
 #include "snake.h"
 #include <cmath>
 #include <iostream>
+#include <string>
 
 /**
  * @brief SetSpeed: the user can input which SnakeSpeed they want to play a game.
  */
+void Snake::SetName()
+{
+  std::string name;
+  std::cout << "Enter your name: ";
+  std::getline(std::cin, name);
+}
 
 void Snake::SetSpeed()
 {
