@@ -6,7 +6,8 @@
 #include "controller.h"
 #include "renderer.h"
 #include "snake.h"
-
+using namespace std;
+#include <string>
 
 class Game {
  public:
@@ -16,8 +17,9 @@ class Game {
 
   int GetScore() const;
   int GetSize() const;
+  void SnakeName(); //[TUAN] Add speed
   void SnakeSpeed(); //[TUAN] Add speed
-
+  string name;
   bool _poisoned;
 
   Uint32 frame_end;
@@ -34,6 +36,7 @@ class Game {
   std::uniform_int_distribution<int> random_w;
   std::uniform_int_distribution<int> random_h;
 
+  
   int score{0};
   //int countdown{3};
   bool recreate{ false };

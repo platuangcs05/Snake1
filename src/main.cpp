@@ -24,7 +24,7 @@ int main() {
     SnakeLog SnakeLog; // //stack
     SnakeLog.Start(); //ham trong class la method (API)
     
-    game.SnakeName(); // Cach goi
+  	game.SnakeName(); // Cach goi
     game.SnakeSpeed(); // Cach goi
     
     game.Run(controller, renderer, kMsPerFrame);

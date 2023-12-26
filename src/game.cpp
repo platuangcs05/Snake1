@@ -58,7 +58,7 @@ void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer
 		if (frame_end - frame_tickinsecond >= 1000) {
 			if (snake.alive)  {
 			frame_snakeTime = (frame_end - title_timestamp)/1000;
-			renderer->UpdateWindowTitle(score, frame_snakeTime);
+			renderer->UpdateWindowTitle(name, score, frame_snakeTime);
 			}
 			
 			frame_count = 0;
@@ -77,12 +77,10 @@ void Game::Run(Controller const& controller, std::unique_ptr<Renderer>& renderer
 /**
  * @brief SnakeSpeed: Add Speed
  */
-
 void Game::SnakeName()
 {
   snake.SetName();
 }
-
 
 void Game::SnakeSpeed()
 {

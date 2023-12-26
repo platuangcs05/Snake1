@@ -5,6 +5,7 @@
 #include "SDL.h"
 #include "snake.h"
 #include <memory>
+#include <string>
 
 class Renderer {
 public:
@@ -13,7 +14,7 @@ public:
     ~Renderer(); // hàm disstructer huy object
 
     void Render(Snake const snake, SDL_Point const& food, SDL_Point const& poisonousFood, bool *poisoned);
-    void UpdateWindowTitle(int score, int startTime);
+    void UpdateWindowTitle(std::string name, int score, int startTime);
 
 private:
     std::unique_ptr<SDL_Window, void(*)(SDL_Window*)> sdl_window;
